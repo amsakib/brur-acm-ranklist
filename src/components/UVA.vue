@@ -64,7 +64,7 @@ export default {
       var promises = [];
 
       uva_ids.forEach(function(uids){
-          var url = "http://uhunt.onlinejudge.org/api/ranklist/" + uids + "/0/0";
+          var url = "https://uhunt.onlinejudge.org/api/ranklist/" + uids + "/0/0";
           promises.push(axios.get(url));
       });
 

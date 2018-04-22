@@ -1,4 +1,4 @@
-# spa
+# BRUR ACM Ranklist
 
 > A Vue.js project
 
