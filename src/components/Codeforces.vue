@@ -33,7 +33,7 @@ export default {
     }
   },
   mounted() {
-      var url = "http://codeforces.com/api/user.info?handles=shahidul_brur;NAbdulla;Ashap_Bappy;SamiulSourav;Mr.Panda;Mr.Dash;Mr_SAM;hasanaliemon;himisir;tarikul39;Rakibul6636;asik_b8;Rimi;nurrahman;amsakib;mhsn06;faruk;Helaluddin_brur;menon;Ruman_Hossain;trms;Dipu_brur";
+      var url = "//codeforces.com/api/user.info?handles=shahidul_brur;NAbdulla;Ashap_Bappy;SamiulSourav;Mr.Panda;Mr.Dash;Mr_SAM;hasanaliemon;himisir;tarikul39;Rakibul6636;asik_b8;Rimi;nurrahman;amsakib;mhsn06;faruk;Helaluddin_brur;menon;Ruman_Hossain;trms;Dipu_brur";
       axios({method: "GET", 
       "url": url}).then(
           result => {
