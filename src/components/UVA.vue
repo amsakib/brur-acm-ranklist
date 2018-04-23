@@ -1,6 +1,26 @@
 <template>
   <div>
     <h2 class="text-center">Ranklist based on no. of problems solved in UVa OJ</h2>
+
+<div class="row">
+      <div class="col-md-3 col-sm-12">
+        <table class="table table-bordered table-striped">
+           <thead> <tr> <th> User color </th> <th>Coder Title </th> </tr> </thead>
+<tbody> 
+	<tr> <td style="background-color:#FA051D;">  &gt;=1000 </td> <td> National Grandmaster </td> </tr>
+	<tr> <td style="background-color:#FAF605;">700-999 </td> <td> Grandmaster </td> </tr>
+	<tr> <td style="background-color:#6151F5;">400-699 </td> <td> Expert </td> </tr>
+	<tr> <td style="background-color:#E339FA;"> 300-399 </td><td> Specialist  </td> </tr>
+	<tr> <td style="background-color:#00DB2C;">200-299  </td> <td>Experienced </td> </tr>
+	<tr> <td style="background-color:#BBEDC1;">100-199 </td> <td> Amateur  </td> </tr>
+	<tr> <td style="background-color:#D9DBD7;"> 50-99 </td> <td> Newbie  </td> </tr>
+	<tr> <td style="background-color:;"> &lt;50</td> <td> Observer </td> </tr>
+	
+</tbody>
+  
+        </table>
+      </div>
+ <div class="col-sm-12 col-md-9">
     <div class="loading" v-if="loading">
       <h3 class="text-center">Loading...</h3>
     </div>
@@ -10,7 +30,9 @@
     </div>
 
     <div v-if="ranklist" class="content">
-      <table class="table table-bordered">
+      
+     
+        <table class="table table-bordered">
       <thead>
         <tr>
           <th>Rank</th>
@@ -20,14 +42,18 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(user, index) in ranklist">
-          <td>{{ (index+1) }}</td>
-          <td>{{ user.name }}</td>
-          <td>{{ user.username }}</td>
-          <td>{{ user.ac }}</td>
-        </tr>
+        <template v-for="(user, index) in ranklist">
+          <tr :style="user.color" >
+            <td>{{ (index+1) }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.ac }}</td>
+          </tr>
+        </template>
       </tbody>
     </table>
+      </div>
+      </div>
     </div>
   </div>
 </template>
@@ -79,8 +105,28 @@ export default {
 
       
       axios.all(promises).then(result => {
+           var tmp;
            for(var i=0; i<result.length; i++) {
-             ranks.push(result[i].data[0]);
+             tmp = result[i].data[0];
+             if(tmp.ac >= 1000) {
+               tmp.color = "background-color: #FA051D";
+             } else if(tmp.ac >= 700) {
+               tmp.color = "background-color: #FAF605;";
+             } else if(tmp.ac >= 400) {
+               tmp.color = "background-color: #6151F5;";
+             } else if(tmp.ac >= 300) {
+               tmp.color = "background-color: #E339FA;";
+             } else if(tmp.ac >= 200) {
+               tmp.color = "background-color: #00DB2C;";
+             } else if(tmp.ac >= 100) {
+               tmp.color = "background-color: #BBEDC1;";
+             } else if(tmp.ac >= 50) {
+               tmp.color = "background-color: #D9DBD7;";
+             } else {
+               tmp.color = "background-color:white;";
+             }
+
+             ranks.push(tmp);
            }
            ranks.sort(function (userA, userB) {
              return userB.ac - userA.ac; // Sort descending based on rating.
