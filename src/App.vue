@@ -21,7 +21,7 @@
           <p class="p-2 text-muted" href="#"></p>
           <p class="p-2 text-muted" href="#"></p>
           <p class="p-2 text-muted" href="#"></p>
-          <router-link to="uva" class="p-2 " >uVA Ranklist</router-link>
+          <router-link to="uva" class="p-2 " >UVa Ranklist</router-link>
           <router-link to="codeforces"  class="p-2">Codeforces Ranklist</router-link>
           <p class="p-2 text-muted" href="#"></p>
           <p class="p-2 text-muted" href="#"></p>
